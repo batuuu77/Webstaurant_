@@ -3,7 +3,6 @@ package com.webstaurantStore.pages;
 import com.webstaurantStore.utilities.Driver;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -44,11 +43,8 @@ public class SearchResultsPage {
         if (!listOfoutOfStock.isEmpty()){
             int sizeOfOutOfStocks = listOfoutOfStock.size();
             String indexNumbertoAddLocator = String.valueOf(searchResults.size() - sizeOfOutOfStocks);
-            try {
-                LastItem = Driver.getDriver().findElement(By.xpath("(//input[@name='addToCartButton'])[ " + indexNumbertoAddLocator + "]"));
-            }catch (NoSuchElementException e){
-                System.err.println("Element not found" + e.getMessage());
-            }}
+            LastItem = Driver.getDriver().findElement(By.xpath("(//input[@name='addToCartButton'])[ " + indexNumbertoAddLocator + "]"));
+        }
             else {
             LastItem = Driver.getDriver().findElement(By.xpath("(//input[@name='addToCartButton'])[60]"));
         }

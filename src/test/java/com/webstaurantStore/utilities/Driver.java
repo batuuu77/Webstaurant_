@@ -13,11 +13,7 @@ public class Driver {
     private Driver(){
 
     }
-
-
-
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
-
 
     public static WebDriver getDriver(){
 
@@ -47,8 +43,6 @@ public class Driver {
         return driverPool.get();
 
     }
-
-
     public static void closeDriver(){
         if (driverPool.get()!=null){
 
