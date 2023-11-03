@@ -1,7 +1,7 @@
 Feature: Product Search and Cart Management
 
   Background:
-    Given User is  on the "https://www.webstaurantstore.com/" website
+    Given User is  on the "webstaurantStore" website
 
   Scenario: Search for 'stainless work table' and add the last item to Cart
     When User searches for 'stainless work table'

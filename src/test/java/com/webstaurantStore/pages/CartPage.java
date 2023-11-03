@@ -1,9 +1,17 @@
 package com.webstaurantStore.pages;
 
 import com.webstaurantStore.utilities.Driver;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CartPage {
 
@@ -14,9 +22,19 @@ public class CartPage {
     @FindBy(xpath = "//button[normalize-space()='Empty Cart']")
     public WebElement emptyCartButton;
 
-    @FindBy(xpath = "//button[contains(text(),'Empty Cart')]")
+    @FindBy(xpath = "(//button[contains(text(),'Empty')])[2]")
     public WebElement emptyCartConfirmationButton;
 
     @FindBy(xpath = "//div[@class='empty-cart__text']")
     public WebElement yourCart_Is_Empty;
+
+    public void emptyCart(){
+        emptyCartButton.click();
+        emptyCartConfirmationButton.click();
+    }
+    public void verifyCartIsEmpty(){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(yourCart_Is_Empty));
+        Assert.assertTrue(yourCart_Is_Empty.isDisplayed());
+    }
 }
